@@ -1,0 +1,26 @@
+version: "2"
+services: 
+    node_server:
+        container_name: node_server
+        restart: always
+        build: ./server
+        ports: 
+            - "4000:4000"
+        links: 
+            - mongo
+            - react_client
+
+    react_client:
+        container_name: react_client
+        restart: always
+        build: ./client
+        ports:
+            - "3000:3000"
+
+    mongo:
+        container_name: mongo
+        image: mongo
+        volumes: 
+            - ./data:/data/db
+        ports: 
+            - "27017:27017"
