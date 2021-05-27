@@ -1,0 +1,28 @@
+version: '3.1'
+
+services:
+    server:
+        container_name: server
+        build: ./server
+        ports: 
+            - "3000:80"
+        links: 
+            - db
+
+    db:
+        container_name: database
+        image: mariadb
+        restart: always
+        volumes: 
+            - ./data:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: tiger
+
+    phpmyadmin:
+        container_name: phpmyadmin
+        image: phpmyadmin
+        restart: always
+        ports:
+        - 9000:80
+        environment:
+        - PMA_ARBITRARY=1
