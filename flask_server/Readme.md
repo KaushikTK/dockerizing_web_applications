@@ -1,7 +1,7 @@
 # FLASK SERVER
 
 To build the image:
-`docker build --t flask_server .`
+`docker build --tag flask_server .`
 ('flask_server' will be the name of the image)
 
 To run the image as a container:
